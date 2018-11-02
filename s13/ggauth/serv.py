@@ -1,29 +1,51 @@
 # -*- coding: utf-8 -*-
 
-from httplib2 import Http
 
-from googleapiclient.discovery import build
-from oauth2client import file, client, tools
+import os
+
+from apiclient import discovery
 from google.oauth2 import service_account
 
+from s13.settings import BASE_DIR
+
+CREDENTIALS_DIR = 'credentials'
+CLIENT_SECRET_FILE = 's13tools-1539004880862-aeb341ef245e.json'
 SCOPES = 'https://www.googleapis.com/auth/spreadsheets'
 
-flow = service_account.Credentials.from_service_account_file(
-        's13tools-1539004880862-a570c7ada860.json',
-        scopes=[SCOPES])
 
-store = file.Storage('/tmp/token2.json')
-creds = store.get()
-# if not creds or creds.invalid:
-#    flow = client.flow_from_clientsecrets('S13tools-17aa94075be4.json', SCOPES)
-#    creds = tools.run_flow(flow, store)
-print flow
-service = build('sheets', 'v4', credentials=flow)
-print service
+def get_spreadsheet_credentials():
+    credential_path = os.path.join(BASE_DIR, 's13', 'ggauth', CREDENTIALS_DIR, CLIENT_SECRET_FILE)
+    credentials = service_account.Credentials.from_service_account_file(credential_path, scopes=[SCOPES])
+    # delegated_credentials = credentials.with_subject('agilo-service-account@open-e.com')
+
+    return credentials
 
 
-SAMPLE_SPREADSHEET_ID = '1mvnafi71D0iNt_PkreBVnWFoq0Ctf6UGDkapwm6TE9s'
-SAMPLE_RANGE_NAME = 'Teren nr 1!A4:B5'
-result = service.spreadsheets().values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                             range=SAMPLE_RANGE_NAME).execute()
-print result
+def get_sheet_service():
+    """
+    Gets google spreadsheet service.
+    """
+
+    credentials = get_spreadsheet_credentials()
+    service = discovery.build('sheets', 'v4', credentials=credentials)
+    return service
+
+
+def read_data(spreadsheet_id, cell_range):
+    s = get_sheet_service()
+    result = s.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range=cell_range).execute()
+
+    return result
+
+
+def write_data(spreadsheet_id, cell_range, cell_values):
+    s = get_sheet_service()
+
+    # cell_values = [[value], ]
+    body = {'values': cell_values}
+
+    s.spreadsheets().values().update(spreadsheetId=spreadsheet_id,
+                                     range=cell_range,
+                                     valueInputOption='RAW',
+                                     body=body
+                                     ).execute()

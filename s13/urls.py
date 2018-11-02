@@ -17,6 +17,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from s13.s13formedit.views import AddTeritorryCardData
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', AddTeritorryCardData.as_view()),
 ]
