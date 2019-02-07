@@ -38,14 +38,15 @@ def read_data(spreadsheet_id, cell_range):
     return result
 
 
-def write_data(spreadsheet_id, cell_range, cell_values):
+def write_data(spreadsheet_id, cell_range, cell_values, valueInputOption='RAW'):
     s = get_sheet_service()
 
     # cell_values = [[value], ]
-    body = {'values': cell_values}
+    body = {'values': cell_values,
+            }
 
     s.spreadsheets().values().update(spreadsheetId=spreadsheet_id,
                                      range=cell_range,
-                                     valueInputOption='RAW',
+                                     valueInputOption=valueInputOption,
                                      body=body
                                      ).execute()
