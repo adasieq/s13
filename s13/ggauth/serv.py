@@ -50,3 +50,11 @@ def write_data(spreadsheet_id, cell_range, cell_values, valueInputOption='RAW'):
                                      valueInputOption=valueInputOption,
                                      body=body
                                      ).execute()
+
+
+def clear_data(spreadsheet_id, cell_range):
+    s = get_sheet_service()
+    s.spreadsheets().values().clear(spreadsheetId=spreadsheet_id,
+                                    range=cell_range,
+                                    body={}
+                                    ).execute()
