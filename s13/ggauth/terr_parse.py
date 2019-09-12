@@ -118,9 +118,9 @@ def parset_territory_sheet(spreadsheet_id):
 
     for terr_nr, terr_data in terr_list.items():
         print terr_nr, terr_data
-        clear_data(spreadsheet_id="1oAXnufUsZ3Er3Jzb5Utf3FQG25fbF8MsHM8N6Ahs_fc",
+        clear_data(spreadsheet_id="1xU4ZVRD7KjataiPoFR4XMFaBP90wY01XcNfoSSTFZeE",
                    cell_range='Teren nr {nr}!A7:E'.format(nr=terr_nr))
-        write_data(spreadsheet_id="1oAXnufUsZ3Er3Jzb5Utf3FQG25fbF8MsHM8N6Ahs_fc",
+        write_data(spreadsheet_id="1xU4ZVRD7KjataiPoFR4XMFaBP90wY01XcNfoSSTFZeE",
                    cell_range='Teren nr {nr}!A7:E'.format(nr=terr_nr),
                    cell_values=terr_data,
                    valueInputOption='USER_ENTERED')

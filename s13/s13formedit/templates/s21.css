@@ -1,0 +1,89 @@
+body {
+    line-height: 1;
+    font-family: "Times New Roman";
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr, td {
+    padding: 0;
+}
+
+div.card {
+    /*border: 1px solid lightgrey;*/
+    width: 700px;
+}
+
+div.card h2 {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 17px;
+}
+
+div.details, div.monthly_data {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+div.details table, div.monthly_data table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+div.monthly_data table, div.monthly_data td {
+    border: 1px solid black;
+}
+
+div.monthly_data {
+    margin-top: 10px;
+}
+
+table.person_details td.option {
+    width: 150px;
+}
+
+table.person_details td {
+    font-weight: bold;
+    font-size: 15px;
+    height: 17px;
+    padding: 1px;
+    margin: 0;
+}
+
+table.person_details tr {
+    padding: 0;
+    margin: 0;
+}
+
+
+
+div.details table, div.monthly_data table {
+    width: 100%;
+}
+
+div.details table {
+    /*height: 100px;*/
+}
+
+table.months thead th {
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+    font-size: 15px;
+    padding: 5px 3px;
+}
+
+table.months tbody td {
+    padding: 3px 3px;
+}
+
+table.months thead th.notes {
+    width: 150px;
+}
+
+table.months thead th.year {
+    width: 100px;
+}
