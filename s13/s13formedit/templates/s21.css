@@ -1,6 +1,8 @@
 body {
     line-height: 1;
     font-family: "Times New Roman";
+    margin: 0;
+    padding: 0;
 }
 
 table {
@@ -13,14 +15,16 @@ tr, td {
 }
 
 div.card {
-    /*border: 1px solid lightgrey;*/
-    width: 700px;
+    border: 1px solid lightgrey;
+    width: 585px;
+    height: 340px;
 }
 
 div.card h2 {
     text-align: center;
-    margin-top: 10px;
-    font-size: 17px;
+    margin-top: 0;
+    font-size: 14px;
+    margin-bottom: 0px;
 }
 
 div.details, div.monthly_data {
@@ -38,7 +42,7 @@ div.monthly_data table, div.monthly_data td {
 }
 
 div.monthly_data {
-    margin-top: 10px;
+    margin-top: 1px;
 }
 
 table.person_details td.option {
@@ -47,9 +51,8 @@ table.person_details td.option {
 
 table.person_details td {
     font-weight: bold;
-    font-size: 15px;
-    height: 17px;
-    padding: 1px;
+    font-size: 13px;
+    height: 13px;
     margin: 0;
 }
 
@@ -72,12 +75,14 @@ table.months thead th {
     text-align: center;
     font-weight: bold;
     border: 1px solid black;
-    font-size: 15px;
-    padding: 5px 3px;
+    font-size: 13px;
+    padding: 1px 1px;
 }
 
 table.months tbody td {
-    padding: 3px 3px;
+    padding: 1px 1px;
+    height: 14px;
+    font-size: 13px;
 }
 
 table.months thead th.notes {
@@ -86,4 +91,14 @@ table.months thead th.notes {
 
 table.months thead th.year {
     width: 100px;
+}
+
+input[type="checkbox" i] {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    margin: 0;
+    width: 9px;
+    height: 9px;
 }
